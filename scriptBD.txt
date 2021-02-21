@@ -1,0 +1,37 @@
+create database promart
+go
+create table employees(
+id int Identity(1,1) not null primary KEY,
+employee_name varchar(100),
+employee_salary decimal(18,2),
+employee_age int
+)
+USE [promart]
+
+GO
+/****** Object:  StoredProcedure [dbo].[proc_emplooyee]    Script Date: 21/02/2021 12:18:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[proc_emplooyee]
+@modo char(1),
+@id int,
+@employee_name varchar(100)=NULL,
+@employee_salary decimal(18,2)=NULL,
+@employee_age int=NULL
+as 
+if  @modo='L'
+ begin
+ select * from  Employees where id=@id
+ end
+ 
+ if @modo='I'
+ begin
+ insert Employees values(@employee_name,@employee_salary,@employee_age)
+ end
+  if @modo='U'
+  begin
+ update Employees set employee_name=@employee_name,employee_salary=@employee_salary,employee_age=@employee_age
+ where id=@id
+ end;

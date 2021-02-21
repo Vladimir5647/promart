@@ -12,11 +12,12 @@ using Promart_Crud.Models.Response;
 using Promart_Crud.Models;
 namespace Promart_Crud.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[Controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
         [HttpGet]
+        [Route ("Get")]
         public IActionResult Get()
         {
             Respuesta oRespuesta = new Respuesta();
@@ -38,6 +39,7 @@ namespace Promart_Crud.Controllers
             return Ok(oRespuesta);
         }
         [HttpPost]
+        [Route("Add")]
         public IActionResult Add(EmployeeRequest oModel)
         {
             Respuesta oRespuesta = new Respuesta();
@@ -60,6 +62,7 @@ namespace Promart_Crud.Controllers
             return Ok(oRespuesta);
         }
         [HttpPut]
+        [Route("Edit")]
         public IActionResult Edit(EmployeeRequest oModel)
         {
             Respuesta oRespuesta = new Respuesta();
